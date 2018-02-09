@@ -1,5 +1,9 @@
+<!DOCTYPE html>
 <html>
-	{% include 'bdrsite/header.html' %}
+    <head>
+        <script src=""//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+{% include 'bdrsite/header.html' %}
 	<body>
 		{% include 'bdrsite/nav.html' %}
 		<!-- Main -->
@@ -13,7 +17,7 @@
 				<style type = "text/css">
 					h2.test00
 					{
-						color:red;
+						color:blue;
 					}
 				</style>
 					     
@@ -24,8 +28,26 @@
 					{% csrf_token %}
 					{{ fill_sql_form }}
 					<br>
-					<input type="submit" value="Submit"/>
+					<input type="submit" name="que" value="Submit"/>
 				</form>
+
+                <script type = "text/javascript">
+                  $(function(){
+                          var submit_form = function(e){
+                            $.getJSON($SCRIPT_ROOT + '/your-query/',{
+                              query:$('input[name="que"]').val()
+                              },function(data){
+                              $('input[name="que"]').focus().select();
+                              });
+                              return false;
+                              };
+                              });
+                  $('input[name="que"]').focus();
+                  });
+               </script>
+
+                     
+
 			
 				<!-- Custom Query Form -->
 				<br>

@@ -9,6 +9,7 @@ from .models import QueryDropdown
 from django.db import connection
 
 
+
 query_dict = {'1':'SELECT site_id, cfu, ctx FROM plate JOIN agar ON plate.agar_id = agar.agar_id', '2':'two'}
 
 def index(request): # GET
@@ -69,10 +70,15 @@ def get_query(request):
 			num_rows = len(result)
 			return render(request, 'analysis/query.html', {'query':query, 'num_rows':num_rows, 'result':result, 'colnames':colnames})
 		except:
-			return HttpResponse("There were one or more errors in your query. Please try again.")
+			return HttpResponse("There were one or more errors??? in your query. Please try again.")
 	else:
 		return HttpResponse("Could not execute query.")
 
+#Test query
+@app.route('/your-query/',method=['GET','POST'])
+def test_query():
+    a=request.args.get('que',type=str)
+    return jsonify(result='The test is {}'.format(a))
 # GOOGLE MAP 
 def get_map(request):
 	return render(request, 'analysis/map.html')
