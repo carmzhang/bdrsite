@@ -17,7 +17,7 @@
 				<style type = "text/css">
 					h2.test00
 					{
-						color:blue;
+						color:orange;
 					}
 				</style>
 					     
@@ -30,13 +30,16 @@
 					<br>
 					<input type="submit" name="que" value="Submit"/>
 				</form>
-
-                <script type = "text/javascript">
+                <br/>
+          <!--      <span id ="result">Here to get results</span>
+-->
+          <!--      <script type = "text/javascript">
                   $(function(){
                           var submit_form = function(e){
                             $.getJSON($SCRIPT_ROOT + '/your-query/',{
                               query:$('input[name="que"]').val()
                               },function(data){
+                              $('#result').text(data.result);
                               $('input[name="que"]').focus().select();
                               });
                               return false;
@@ -45,7 +48,7 @@
                   $('input[name="que"]').focus();
                   });
                </script>
-
+               -->
                      
 
 			

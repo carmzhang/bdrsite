@@ -9,7 +9,6 @@ from .models import QueryDropdown
 from django.db import connection
 
 
-
 query_dict = {'1':'SELECT site_id, cfu, ctx FROM plate JOIN agar ON plate.agar_id = agar.agar_id', '2':'two'}
 
 def index(request): # GET
@@ -58,7 +57,7 @@ def get_selection(request):
 def get_query(request):
 	sql_form = FillQueryForm(request.POST)
 	if sql_form.is_valid(): 
-		# process the data in form.cleaned_data as required
+# process the data in form.cleaned_data as required
 		select = sql_form.cleaned_data['select']
 		from_field = sql_form.cleaned_data['from_field']
 		where = sql_form.cleaned_data['where']
@@ -69,16 +68,18 @@ def get_query(request):
 			colnames = result[0].keys
 			num_rows = len(result)
 			return render(request, 'analysis/query.html', {'query':query, 'num_rows':num_rows, 'result':result, 'colnames':colnames})
-		except:
-			return HttpResponse("There were one or more errors??? in your query. Please try again.")
-	else:
+    		except:
+			return HttpResponse("There were one or more errors???!!!!!!!!! in your query. Please try again.")
+        else:
 		return HttpResponse("Could not execute query.")
 
-#Test query
-@app.route('/your-query/',method=['GET','POST'])
-def test_query():
-    a=request.args.get('que',type=str)
-    return jsonify(result='The test is {}'.format(a))
+#test_query
+
+#def test_query(request):
+#    a = request.arg,get('que',type =str)
+#    sql_form=FillQueryForm(request.POST)
+#    return HttpResponse("23333333")
+
 # GOOGLE MAP 
 def get_map(request):
 	return render(request, 'analysis/map.html')
