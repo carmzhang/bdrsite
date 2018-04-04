@@ -18,13 +18,16 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-	url(r'^$', views.index, name='index'),
-    url(r'^database/', include('database.urls')),
-    url(r'^analysis/', include('analysis.urls')),
-    url(r'^upload/', include('upload.urls')),
-    url(r'^mapdata/', include('mapdata.urls')),
-    url(r'^admin/', admin.site.urls),
-]
+        url(r'^$', views.index, name='index'),
+        url(r'^database/', include('database.urls')),
+        url(r'^analysis/', include('analysis.urls',namespace = 'analysis')),
+        url(r'^tutorial/',include('tutorial.urls',namespace = 'tutorial')),
+        url(r'^upload/', include('upload.urls')),
+        url(r'^mapdata/', include('mapdata.urls')),
+        url(r'^admin/', admin.site.urls),
+        ]
+# url(r'^upload/', include('upload.urls')),
+#url(r'^mapdata/', include('mapdata.urls')),
 
 # urlpatterns = [
 #     url(r'^admin/', admin.site.urls),

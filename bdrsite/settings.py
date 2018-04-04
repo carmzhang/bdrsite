@@ -33,8 +33,11 @@ ALLOWED_HOSTS = ['bluedevilresistome.pythonanywhere.com','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'tutorial.apps.TutorialConfig',
     'database.apps.DatabaseConfig',
     'analysis.apps.AnalysisConfig',
+    'upload.apps.UploadConfig',
+    'mapdata.apps.MapdataConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
