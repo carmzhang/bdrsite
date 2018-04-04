@@ -1,0 +1,70 @@
+<Root>
+   <Root Index="0">
+      <Site>CIEMAS Lab Hallway Door</Site>
+      <Bacteria>0.4</Bacteria>
+   </Root>
+   <Root Index="1">
+      <Site>CIEMAS Elevator Button 1</Site>
+      <Bacteria>0.4</Bacteria>
+   </Root>
+   <Root Index="2">
+      <Site>CIEMAS Elevator Button 2</Site>
+      <Bacteria>0.3</Bacteria>
+   </Root>
+   <Root Index="3">
+      <Site>CIEMAS Elevator Button 3</Site>
+      <Bacteria>0.3</Bacteria>
+   </Root>
+   <Root Index="4">
+      <Site>CIEMAS Entry Door</Site>
+      <Bacteria>12.1</Bacteria>
+   </Root>
+   <Root Index="5">
+      <Site>Divinity Cafe Door</Site>
+      <Bacteria>21.625</Bacteria>
+   </Root>
+   <Root Index="6">
+      <Site>Chapel Door</Site>
+      <Bacteria>2.0</Bacteria>
+   </Root>
+   <Root Index="7">
+      <Site>West Union Door</Site>
+      <Bacteria>1.375</Bacteria>
+   </Root>
+   <Root Index="8">
+      <Site>Garden Terrace Bench</Site>
+      <Bacteria>537.9</Bacteria>
+   </Root>
+   <Root Index="9">
+      <Site>Wilson Gym</Site>
+      <Bacteria>6.333333333333333</Bacteria>
+   </Root>
+   <Root Index="10">
+      <Site>C1 Bus</Site>
+      <Bacteria>2.5</Bacteria>
+   </Root>
+   <Root Index="11">
+      <Site>BC Male Bathroom</Site>
+      <Bacteria>1.0</Bacteria>
+   </Root>
+   <Root Index="12">
+      <Site>BC Female Bathroom</Site>
+      <Bacteria>1.0</Bacteria>
+   </Root>
+   <Root Index="13">
+      <Site>Perkins Printer</Site>
+      <Bacteria>50.0</Bacteria>
+   </Root>
+   <Root Index="14">
+      <Site>Medical Center Entrance</Site>
+      <Bacteria>1.0</Bacteria>
+   </Root>
+   <Root Index="15">
+      <Site>Marketplace</Site>
+      <Bacteria>1.0</Bacteria>
+   </Root>
+   <Root Index="16">
+      <Site>Brodie Gym</Site>
+      <Bacteria>2.0</Bacteria>
+   </Root>
+</Root>
