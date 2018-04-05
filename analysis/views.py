@@ -7,6 +7,11 @@ import inspect
 from .forms import CustomQueryForm, QueryDropdownForm, FillQueryForm, MapForm
 from .models import QueryDropdown
 from django.db import connection
+import array
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import pylab
+from pylab import *
 
 
 query_dict = {'1':'SELECT site_id, cfu, ctx FROM plate JOIN agar ON plate.agar_id = agar.agar_id', '2':'two'}
@@ -25,7 +30,7 @@ def get_custom_query(request): # POST
 	# create a form instance and populate it with data from the request
 	sql_form = CustomQueryForm(request.POST)
 	# check if it's valid
-	if sql_form.is_valid(): 
+	if sql_form.is_valid():
 		# process the data in form.cleaned_data as required
 		query = sql_form.cleaned_data['query']
 
@@ -34,7 +39,7 @@ def get_custom_query(request): # POST
 			colnames = result[0].keys
 			num_rows = len(result)
 			return render(request, 'analysis/query.html', {'query':query, 'num_rows':num_rows, 'result':result, 'colnames':colnames})
-		except: 
+		except:
 			return HttpResponse("There were one or more errors in your query. Please try again.")
 	else:
 		return HttpResponse("Could not execute query.")
@@ -49,14 +54,34 @@ def get_selection(request):
 		colnames = result[0].keys
 		num_rows = len(result)
 		# return BarView.as_view()
-		return render(request, 'analysis/query.html', {'query':query, 'num_rows':num_rows, 'result':result, 'colnames':colnames, 'preselected':True})
+		graphic = plot(result,colnames)
+		return render(request, 'analysis/query.html', {'query':query, 'num_rows':num_rows, 'result':result, 'colnames':colnames, 'graphic':graphic, 'preselected':True})
 	else:
 		return HttpResponse("Could not execute selection.")
+
+def plot(countArray,NameArray):
+    x = np.linspace(1,len(NameArray),len(NameArray))
+    fig = plt.figure()
+    plt.bar(x, countArray)
+    plt.xlabel('Sites')
+    plt.ylabel('Average CFU Count')
+    plt.xticks(x, NameArray, ha = 'left', rotation=315, wrap='True')
+    plt.xticks(size = 6)
+
+    canvas = fig.canvas
+    buf, size = canvas.print_to_buffer()
+    image = Image.frombuffer('RGBA', size, buf, 'raw', 'RGBA', 0, 1)
+    buffer=io.BytesIO()
+    image.save(buffer,'PNG')
+    graphic = buffer.getvalue()
+    graphic = base64.b64encode(graphic)
+    buffer.close()
+    return graphic
 
 # FILL IN SQL
 def get_query(request):
 	sql_form = FillQueryForm(request.POST)
-	if sql_form.is_valid(): 
+	if sql_form.is_valid():
 # process the data in form.cleaned_data as required
 		select = sql_form.cleaned_data['select']
 		from_field = sql_form.cleaned_data['from_field']
@@ -80,7 +105,7 @@ def get_query(request):
 #    sql_form=FillQueryForm(request.POST)
 #    return HttpResponse("23333333")
 
-# GOOGLE MAP 
+# GOOGLE MAP
 def get_map(request):
 	return render(request, 'analysis/map.html')
 
@@ -97,4 +122,3 @@ def dictfetchall(cursor):
     	dict(zip(columns, row))
     	for row in cursor.fetchall()
     ]
-
