@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'database.apps.DatabaseConfig',
     'analysis.apps.AnalysisConfig',
     'upload.apps.UploadConfig',
+    'members.apps.MembersConfig',
     'mapdata.apps.MapdataConfig',
     'django.contrib.admin',
     'django.contrib.auth',

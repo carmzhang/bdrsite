@@ -23,6 +23,7 @@ urlpatterns = [
         url(r'^analysis/', include('analysis.urls',namespace = 'analysis')),
         url(r'^tutorial/',include('tutorial.urls',namespace = 'tutorial')),
         url(r'^upload/', include('upload.urls')),
+        url(r'^members/',include('members.urls',namespace = 'members')),
         url(r'^mapdata/', include('mapdata.urls')),
         url(r'^admin/', admin.site.urls),
         ]

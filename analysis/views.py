@@ -8,10 +8,10 @@ from .forms import CustomQueryForm, QueryDropdownForm, FillQueryForm, MapForm
 from .models import QueryDropdown
 from django.db import connection
 import array
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import pylab
-from pylab import *
+#import numpy as np
+#import matplotlib.pyplot as plt
+#from matplotlib import pylab
+#from pylab import *
 
 
 query_dict = {'1':'SELECT site_id, cfu, ctx FROM plate JOIN agar ON plate.agar_id = agar.agar_id', '2':'two'}
