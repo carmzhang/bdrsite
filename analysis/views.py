@@ -54,29 +54,30 @@ def get_selection(request):
 		colnames = result[0].keys
 		num_rows = len(result)
 		# return BarView.as_view()
-		graphic = plot(result,colnames)
-		return render(request, 'analysis/query.html', {'query':query, 'num_rows':num_rows, 'result':result, 'colnames':colnames, 'graphic':graphic, 'preselected':True})
+		#graphic = plot(result,colnames)
+#		return render(request, 'analysis/query.html', {'query':query, 'num_rows':num_rows, 'result':result, 'colnames':colnames, 'graphic':graphic, 'preselected':True})
 	else:
 		return HttpResponse("Could not execute selection.")
 
-def plot(countArray,NameArray):
-    x = np.linspace(1,len(NameArray),len(NameArray))
-    fig = plt.figure()
-    plt.bar(x, countArray)
-    plt.xlabel('Sites')
-    plt.ylabel('Average CFU Count')
-    plt.xticks(x, NameArray, ha = 'left', rotation=315, wrap='True')
-    plt.xticks(size = 6)
+#def plot(countArray,NameArray):
+   # x = django_numpy.linspace(1,len(NameArray),len(NameArray))
+#    x = linspace(1,len(NameArray),len(NameArray))
+#    fig = plt.figure()
+#    plt.bar(x, countArray)
+#    plt.xlabel('Sites')
+#    plt.ylabel('Average CFU Count')
+#    plt.xticks(x, NameArray, ha = 'left', rotation=315, wrap='True')
+#    plt.xticks(size = 6)
 
-    canvas = fig.canvas
-    buf, size = canvas.print_to_buffer()
-    image = Image.frombuffer('RGBA', size, buf, 'raw', 'RGBA', 0, 1)
-    buffer=io.BytesIO()
-    image.save(buffer,'PNG')
-    graphic = buffer.getvalue()
-    graphic = base64.b64encode(graphic)
-    buffer.close()
-    return graphic
+#    canvas = fig.canvas
+#    buf, size = canvas.print_to_buffer()
+#    image = Image.frombuffer('RGBA', size, buf, 'raw', 'RGBA', 0, 1)
+#    buffer=io.BytesIO()
+#    image.save(buffer,'PNG')
+#    graphic = buffer.getvalue()
+#    graphic = base64.b64encode(graphic)
+#    buffer.close()
+#    return graphic
 
 # FILL IN SQL
 def get_query(request):
